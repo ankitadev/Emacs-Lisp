@@ -1,0 +1,38 @@
+#+BEGIN_SRC emacs-lisp
+(require 'cl) ;; for destructuring-bind
+
+(defun egcd (a b)
+  "Computes the greatest common divisor of a and b recursively.
+   This extended version returns a list of d, x and y, where
+   d = ax + by = gcd(a, b)."
+  (if (zerop b)
+      (list a 1 0)
+    (let ((q (/ a b))
+          (r (% a b)))
+      (destructuring-bind (d x y) (egcd b r)
+        (list d y (- x (* q y)))))))
+#+END_SRC
+
+#+RESULTS:
+: egcd
+
+#+BEGIN_SRC emacs-lisp
+  (let* ((r1 4)
+         (r2 2)
+         (r3 9)
+         (m1 7)
+         (m2 11)
+         (m3 13)
+         (m (* m1 m2 m3))
+         (o1 (/ m m1))
+         (o2 (/ m m2))
+         (o3 (/ m m3))
+         (y1 (find-TUMMI o1 m1 ))
+         (y2 (find-TUMMI o2 m2 ))
+         (y3 (find-TUMMI o3 m3 ))
+         )
+    (mod (+ (* r1 o1 y1) (* r2 o2 y2) (* r3 o3 y3)) m))
+#+END_SRC
+
+#+RESULTS:
+: 893
