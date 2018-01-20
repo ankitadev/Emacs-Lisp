@@ -1,0 +1,19 @@
+#+BEGIN_SRC emacs-lisp
+(defun prime-power-list-to-number (prime-power-list)
+  (let ((number 1)
+        (primes [2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71]))
+    (loop for prime across primes
+          for power in prime-power-list
+          do (setq number (* number (expt prime power))))
+    number))
+#+END_SRC
+
+#+RESULTS:
+: prime-power-list-to-number
+
+#+BEGIN_SRC emacs-lisp
+(prime-power-list-to-number '(2 0 0 0 0 1))
+#+END_SRC   
+
+#+RESULTS:
+: 52
