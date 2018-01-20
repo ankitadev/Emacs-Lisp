@@ -1,0 +1,35 @@
+#+BEGIN_SRC emacs-lisp :results silent
+  (defun printf (format-directive &rest args)
+    (princ (apply 'format format-directive args)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results silent
+  (defun mystery (&rest numbers)
+    (loop for n from 0 to (apply 'lcm numbers)
+          do (printf "%3d <--> %s\n" n
+                     (loop for m in numbers collect (mod n m)))))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :results output
+  (mystery 3 5)
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+  0 <--> (0 0)
+  1 <--> (1 1)
+  2 <--> (2 2)
+  3 <--> (0 3)
+  4 <--> (1 4)
+  5 <--> (2 0)
+  6 <--> (0 1)
+  7 <--> (1 2)
+  8 <--> (2 3)
+  9 <--> (0 4)
+ 10 <--> (1 0)
+ 11 <--> (2 1)
+ 12 <--> (0 2)
+ 13 <--> (1 3)
+ 14 <--> (2 4)
+ 15 <--> (0 0)
+#+end_example
