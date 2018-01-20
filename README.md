@@ -1,2 +1,2 @@
 # Emacs-Lisp
-Some programs with Elisp in spacemacs
+Some Mathmatical programs with Elisp in spacemacs
